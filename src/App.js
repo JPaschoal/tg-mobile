@@ -6,7 +6,7 @@ import Login from './screens/login/Login'
 import Routes from './Routes'
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(true)
+  const [isLogged, setIsLogged] = useState(false)
 
   return (
     isLogged ? (
