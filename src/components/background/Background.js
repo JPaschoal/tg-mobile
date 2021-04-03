@@ -18,7 +18,9 @@ const Background = ({ children }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingTop: 40,
+    paddingHorizontal: 15
   }
 })
 

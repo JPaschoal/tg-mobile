@@ -1,13 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 const StudentHeader = ({ title, openDrawer }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => { openDrawer() }} style={styles.backButton}>
-        <Text>
-          menu
-        </Text>
+        <Feather name='menu' size={24} color='#012480'/>
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
     </View>
@@ -17,9 +16,6 @@ const StudentHeader = ({ title, openDrawer }) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 100,
-    padding: 15,
-    paddingTop: 50,
     paddingBottom: 30,
 
     display: 'flex',
