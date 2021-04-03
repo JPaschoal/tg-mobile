@@ -1,21 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 
-const Profile = () => {
+import Background from '../../components/background/Background'
+import StudentHeader from '../../components/studentHeader/StudentHeader';
+
+const Profile = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text>profile</Text>
-    </View>
-    );
+    <Background>
+      <StudentHeader title="Perfil" openDrawer={navigation.openDrawer}/>
+      <Text>Profileeee</Text>
+    </Background>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Profile;
