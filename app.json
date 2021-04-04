@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "tg-mobile",
+    "entryPoint": "./src/App.js",
     "slug": "tg-mobile",
     "version": "1.0.0",
     "orientation": "portrait",

@@ -1,12 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
-export default function App() {
+// import { Container } from './styles';
+
+const Logout = () => {
   return (
     <View style={styles.container}>
-      <Text>Testee</Text>
-      <StatusBar style="auto" />
+      <Text >
+        Logout
+      </Text>
     </View>
   );
 }
@@ -19,3 +21,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Logout;
