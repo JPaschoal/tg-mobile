@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
+import { Circle } from 'react-native-animated-spinkit'
 
 import Background from '../../components/background/Background'
 import StudentHeader from '../../components/studentHeader/StudentHeader';
@@ -26,11 +27,17 @@ const Profile = ({ navigation }) => {
 
   return (
     <Background>
+      <StudentHeader title="Perfil" openDrawer={navigation.openDrawer}/>
       {loading ? (
-        <View><Text>Loading...</Text></View>
+        <View style={styles.loadingContainer}>
+          <Circle 
+            size={80}
+            color='#012480'
+            style={styles.loading}
+          />
+        </View>
       ) : (
         <View>
-          <StudentHeader title="Perfil" openDrawer={navigation.openDrawer}/>
           <View style={styles.imageContainer}>
             <Image
               source={userPicture}
@@ -58,6 +65,12 @@ const Profile = ({ navigation }) => {
 
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'center',
