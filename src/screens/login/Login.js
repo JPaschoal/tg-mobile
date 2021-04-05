@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Image, StyleSheet, View, Text, TextInput, Button, TouchableOpacity, Linking } from 'react-native';
+import { Image, StyleSheet, View, Text, TextInput, TouchableOpacity, Linking } from 'react-native';
 import Modal from 'react-native-modal';
 import { Circle } from 'react-native-animated-spinkit'
 
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: "10%",
     paddingVertical: 10,
     borderRadius: 10,
-    marginTop: 30
+    marginTop: 30,
   },
   signinText: {
     fontSize: 19,

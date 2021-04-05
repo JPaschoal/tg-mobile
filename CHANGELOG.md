@@ -7,7 +7,8 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 
 ### Added 
 
-- Login page
+- Login page;
+- Profile page;
 
 ## [0.1.0] - 04-04-2021
 
