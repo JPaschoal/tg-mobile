@@ -7,6 +7,12 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 
 ### Added 
 
+- Login page
+
+## [0.1.0] - 04-04-2021
+
+### Added 
+
 - Expo configuration;
 - Tab routes configs;
 - Drawer on students page;

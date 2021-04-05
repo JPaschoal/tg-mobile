@@ -12,7 +12,7 @@ export default function App() {
     isLogged ? (
       <Routes />
       ) : (
-      <Login/>
+      <Login setIsLogged={setIsLogged} />
     )
     
   );
