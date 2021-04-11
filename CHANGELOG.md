@@ -12,6 +12,7 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 - Grades page;
 - Schedules page;
 - Absenses page;
+- Logout page;
 
 ## [0.1.0] - 04-04-2021
 
