@@ -5,6 +5,17 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 
 ## [Unreleased]
 
+## [0.2.0] - 11-04-2021
+
+### Added 
+
+- Login page;
+- Profile page;
+- Grades page;
+- Schedules page;
+- Absenses page;
+- Logout page;
+
 ## [0.1.0] - 04-04-2021
 
 ### Added 

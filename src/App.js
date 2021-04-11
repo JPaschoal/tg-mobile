@@ -1,20 +1,14 @@
 import { registerRootComponent } from 'expo';
-import React from 'react';
-import { useState } from 'react';
+import React, { useContext } from 'react';
 
-import Login from './screens/login/Login'
 import Routes from './Routes'
+import { AuthProvider } from './contexts/Auth'
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(false)
-
   return (
-    isLogged ? (
+    <AuthProvider>
       <Routes />
-      ) : (
-      <Login/>
-    )
-    
+    </AuthProvider>
   );
 }
 
