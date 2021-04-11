@@ -10,6 +10,7 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 - Login page;
 - Profile page;
 - Grades page;
+- Schedules page;
 
 ## [0.1.0] - 04-04-2021
 
