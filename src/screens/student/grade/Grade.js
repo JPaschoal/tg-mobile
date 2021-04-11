@@ -3,9 +3,9 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Circle } from 'react-native-animated-spinkit';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import Background from '../../components/background/Background';
-import StudentHeader from '../../components/studentHeader/StudentHeader';
-import api from '../../services/api';
+import Background from '../../../components/background/Background';
+import StudentHeader from '../../../components/studentHeader/StudentHeader';
+import api from '../../../services/api';
 
 const Grade = ({ navigation }) => {
   const [grades, setGrades] = useState()
@@ -69,9 +69,9 @@ const Grade = ({ navigation }) => {
                     {grades[selected].discipline.name}
                   </Text>
                   <Text style={styles.disciplineGrade}>Média final: {grades[selected].discipline.grade}</Text>
-                  {grades[selected].evaluations.map((element) => {
+                  {grades[selected].evaluations.map((element, index) => {
                     return (
-                      <View key={element} style={styles.evaluationContainer}>
+                      <View key={element, index} style={styles.evaluationContainer}>
                         <Text style={styles.evaluationInfo}>{element.code}</Text>
                         <Text style={styles.evaluationInfo}>{
                           element.grades[0] ?  element.grades[0].score : '-'
