@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Image, StyleSheet, View, Text, TextInput, TouchableOpacity, Linking } from 'react-native';
 import Modal from 'react-native-modal';
 import { Circle } from 'react-native-animated-spinkit'
@@ -7,8 +7,10 @@ import { Circle } from 'react-native-animated-spinkit'
 import Background from '../../components/background/Background'
 import api from '../../services/api'
 import Logo from '../../../assets/Logo-login.png'
+import { AuthContext } from '../../contexts/Auth'
 
-const Login = ({ setIsLogged }) => {
+const Login = () => {
+  const [isLogged, setIsLogged] = useContext(AuthContext)
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
