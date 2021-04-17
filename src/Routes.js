@@ -4,12 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 
 import Drawer from './components/drawer/Drawer'
-import Notebooks from './screens/notebooks/notebooks-list/Notebooks'
 import Forums from './screens/forums/Forums'
 import Logout from './screens/logout/Logout'
 import Login from './screens/login/Login'
 import { AuthContext } from './contexts/Auth'
 import { StudentProvider } from './contexts/Student'
+import StackNavigation from './components/stackNavigation/StackNavigation'
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +45,7 @@ export default Routes = () => {
           }}
           >
             <Tab.Screen name="Aluno" component={Drawer} />
-            <Tab.Screen name="Cadernos" component={Notebooks} />
+            <Tab.Screen name="Cadernos" component={StackNavigation} />
             <Tab.Screen name="Fóruns" component={Forums} />
             <Tab.Screen name="Logout" component={Logout} />
           </Tab.Navigator>
