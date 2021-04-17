@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import { Circle } from 'react-native-animated-spinkit'
 
@@ -6,9 +6,10 @@ import Background from '../../../components/background/Background'
 import StudentHeader from '../../../components/studentHeader/StudentHeader';
 import api from '../../../services/api'
 import userPicture from '../../../../assets/user-picture.png'
+import { StudentContext } from '../../../contexts/Student';
 
 const Profile = ({ navigation }) => {
-  const [profile, setProfile] = useState()
+  const [profile, setProfile] = useContext(StudentContext)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
