@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import NotebooksList from '../../screens/notebooks/notebooks-list/NotebooksList'
+import NotebooksList from '../../screens/notebooks/NotebooksList/NotebooksList'
 
 const Stack = createStackNavigator()
 
