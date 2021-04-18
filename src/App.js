@@ -1,5 +1,5 @@
 import { registerRootComponent } from 'expo';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Routes from './Routes'
 import { AuthProvider } from './contexts/Auth'
