@@ -5,11 +5,15 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 
 ## [Unreleased]
 
+### Added
+
+- Notebooks List page;
+
 ## [0.3.0] - 17-04-2021
 
 ### Added
 
-- Notebooks List Pages;
+- Notebooks List page;
 - Create and Update notebook;
 
 ## [0.2.0] - 11-04-2021
