@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useState } from 'react/cjs/react.development';
 
-const StackHeader = ({title, previous, goBackTo}) => {
+const StackHeader = ({title, previous, goBackTo, save, onSave}) => {
   const [headerWidth, setHeaderWidth] = useState()
 
   useEffect(() => {
@@ -22,6 +22,11 @@ const StackHeader = ({title, previous, goBackTo}) => {
         textAlign: 'center',
         fontSize: 40
       }}>{title}</Text>
+      {save && (
+        <TouchableOpacity>
+          <Feather name='save' size={30} color='#012480' style={{marginTop: 15}} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
