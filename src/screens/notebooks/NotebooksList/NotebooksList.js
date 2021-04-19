@@ -9,6 +9,7 @@ import { StudentContext } from '../../../contexts/Student'
 import StackHeader from '../../../components/stackHeader/StackHeader'
 import CreateNotebook from '../createNotebook/createNotebook'
 import { NotebookContext } from '../../../contexts/Notebook'
+import FABCreateButton from '../../../components/FABCreateButton/FABCreateButton';
 
 const NotebooksList = ({ navigation }) => {
   const [profile] = useContext(StudentContext)
@@ -105,16 +106,7 @@ const NotebooksList = ({ navigation }) => {
             )
           )}
         </ScrollView>
-        <TouchableOpacity 
-          styles={styles.plusBtn}  
-          onPress={() => {
-            setOperation('create')
-            setIsOpen(true)
-          }
-        }
-          >
-          <Feather name='plus' size={48} color={'#fff'} style={styles.btnIcon} />
-        </TouchableOpacity>
+        <FABCreateButton setOperation={setOperation} setOpen={setIsOpen}  />
         <Modal
           animationIn='slideInUp'
           isVisible={deleteModal}
@@ -190,17 +182,6 @@ const styles = StyleSheet.create({
   iconsContainer: {
     flexDirection: 'row',
     alignItems: 'center'
-  },
-  plusBtn: {
-    position: 'absolute',
-    alignItems: 'flex-end'
-  },
-  btnIcon: {
-    backgroundColor: "rgba(35, 49, 170, 0.5)",
-    width: 48,
-    borderRadius: 100,
-    alignSelf:'center',
-    marginBottom: 5
   },
   modal: {
     alignItems: 'center'
