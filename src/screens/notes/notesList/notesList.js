@@ -6,6 +6,7 @@ import Modal from 'react-native-modal';
 import Background from '../../../components/background/Background';
 import StackHeader from '../../../components/stackHeader/StackHeader';
 import { NotebookContext } from '../../../contexts/Notebook'
+import FABCreationButton from '../../../components/FABCreateButton/FABCreateButton'
 import api from '../../../services/api';
 
 const NotesList = ({ navigation }) => {
@@ -52,27 +53,29 @@ const NotesList = ({ navigation }) => {
   return (
     <Background>
       <StackHeader title="Anotações" previous="Cadernos" goBackTo={navigation.navigate} />
-      <ScrollView>
-        {loading ? (
-          <View><Text>Loading...</Text></View>
-        ) : (
-          notes.length > 0 ? (
-            notes.map((note, index) => {
-              return(
-                <TouchableOpacity key={index}>
-                  <View style={styles.noteContainer}>
-                    <Text style={styles.noteName}>{note.name}</Text>
-                    <TouchableOpacity onPress={() => handlePressDelete(note.id)}>
-                      <Feather name='trash-2' size={24} color={'#012480'}/>
-                    </TouchableOpacity>
-                  </View>
-                </TouchableOpacity>
-              )
-            })
+      <View style={styles.screenContainer}>
+        <ScrollView>
+          {loading ? (
+            <View><Text>Loading...</Text></View>
           ) : (
-            <View><Text>Não existe nenhuma anotação neste caderno</Text></View>
-          )
-        )}
+            notes.length > 0 ? (
+              notes.map((note, index) => {
+                return(
+                  <TouchableOpacity key={index} onPress={() => {navigation.navigate('Anotação')}}>
+                    <View style={styles.noteContainer}>
+                      <Text style={styles.noteName}>{note.name}</Text>
+                      <TouchableOpacity onPress={() => handlePressDelete(note.id)}>
+                        <Feather name='trash-2' size={24} color={'#012480'}/>
+                      </TouchableOpacity>
+                    </View>
+                  </TouchableOpacity>
+                )
+              })
+            ) : (
+              <View><Text>Não existe nenhuma anotação neste caderno</Text></View>
+            )
+          )}
+        </ScrollView>
         <Modal
           animationIn='slideInUp'
           isVisible={deleteModal}
@@ -91,12 +94,26 @@ const NotesList = ({ navigation }) => {
             </View>
           </View>
         </Modal>
-      </ScrollView>
+        {/* <FABCreationButton setOpen={setIsOpen} setOperation={setOperation} /> */}
+        <TouchableOpacity 
+          styles={styles.plusBtn}  
+          onPress={() => {
+              navigation.navigate('Anotação')
+            }
+          }
+        >
+          <Feather name='plus' size={48} color={'#fff'} style={styles.btnIcon} />
+        </TouchableOpacity>
+      </View>
     </Background>
   );
 }
 
 const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    position: 'relative'
+  },
   noteContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -149,7 +166,18 @@ const styles = StyleSheet.create({
   cancelText: {
     fontSize: 18,
     color: '#fff'
-  }
+  },
+  plusBtn: {
+    position: 'absolute',
+    alignItems: 'flex-end'
+  },
+  btnIcon: {
+    backgroundColor: "rgba(35, 49, 170, 0.5)",
+    width: 48,
+    borderRadius: 100,
+    alignSelf:'center',
+    marginBottom: 5
+  },
 })
 
 export default NotesList;
