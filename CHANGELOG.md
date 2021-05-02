@@ -7,7 +7,8 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 
 ### Added
 
-- Notebooks List page;
+- Notes List page;
+- creating and updating notes;
 
 ## [0.3.0] - 17-04-2021
 
