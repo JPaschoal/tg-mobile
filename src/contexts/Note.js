@@ -6,7 +6,7 @@ export const NoteProvider = ({ children }) => {
   const [selectedNote, setSelectedNote] = useState()
   
   return(
-    <NoteContext.Provider value={[selectedNote, setSelectedNote]}>
+    <NoteContext.Provider value={ [ selectedNote, setSelectedNote]}>
       {children}
     </NoteContext.Provider>
   );

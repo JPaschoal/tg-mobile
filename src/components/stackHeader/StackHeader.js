@@ -23,7 +23,7 @@ const StackHeader = ({title, previous, goBackTo, save, onSave}) => {
         fontSize: 40
       }}>{title}</Text>
       {save && (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onSave}>
           <Feather name='save' size={30} color='#012480' style={{marginTop: 15}} />
         </TouchableOpacity>
       )}

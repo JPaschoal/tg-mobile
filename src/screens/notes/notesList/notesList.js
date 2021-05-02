@@ -6,11 +6,13 @@ import Modal from 'react-native-modal';
 import Background from '../../../components/background/Background';
 import StackHeader from '../../../components/stackHeader/StackHeader';
 import { NotebookContext } from '../../../contexts/Notebook'
+import { NoteContext } from '../../../contexts/Note'
 import FABCreationButton from '../../../components/FABCreateButton/FABCreateButton'
 import api from '../../../services/api';
 
 const NotesList = ({ navigation }) => {
   const [selectedNotebook] = useContext(NotebookContext)
+  const [selectedNote, setSelectedNote] = useContext(NoteContext)
   const [notes, setNotes] = useState([])
   const [loading, setLoading] = useState(true)
   const [selectedDelete, setSelectedDelete] = useState()
@@ -50,6 +52,22 @@ const NotesList = ({ navigation }) => {
     setDeleteModal(false)
   }
 
+  const handleNotePress = (id) => {
+    setSelectedNote({
+      id,
+      operation: 'update'
+    })
+    navigation.navigate('Anotação')
+  }
+
+  const handleCreatePress = () => {
+    setSelectedNote({
+      id: undefined,
+      operation: 'create'
+    })
+    navigation.navigate('Anotação')
+  }
+
   return (
     <Background>
       <StackHeader title="Anotações" previous="Cadernos" goBackTo={navigation.navigate} />
@@ -61,7 +79,7 @@ const NotesList = ({ navigation }) => {
             notes.length > 0 ? (
               notes.map((note, index) => {
                 return(
-                  <TouchableOpacity key={index} onPress={() => {navigation.navigate('Anotação')}}>
+                  <TouchableOpacity key={index} onPress={() => {handleNotePress(note.id)}}>
                     <View style={styles.noteContainer}>
                       <Text style={styles.noteName}>{note.name}</Text>
                       <TouchableOpacity onPress={() => handlePressDelete(note.id)}>
@@ -97,10 +115,7 @@ const NotesList = ({ navigation }) => {
         {/* <FABCreationButton setOpen={setIsOpen} setOperation={setOperation} /> */}
         <TouchableOpacity 
           styles={styles.plusBtn}  
-          onPress={() => {
-              navigation.navigate('Anotação')
-            }
-          }
+          onPress={handleCreatePress}
         >
           <Feather name='plus' size={48} color={'#fff'} style={styles.btnIcon} />
         </TouchableOpacity>
