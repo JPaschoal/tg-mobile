@@ -5,8 +5,11 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 
 ## [Unreleased]
 
+## [0.4.0] - 22-05-2021
+
 ### Added
 
+- Forums pages;
 - Notes List page;
 - creating and updating notes;
 

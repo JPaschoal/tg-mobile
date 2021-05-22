@@ -3,7 +3,7 @@
     "name": "tg-mobile",
     "entryPoint": "./src/App.js",
     "slug": "tg-mobile",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "orientation": "portrait",
     "icon": "./assets/splash1-quadrada.png",
     "splash": {
