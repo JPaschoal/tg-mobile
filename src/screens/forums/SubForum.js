@@ -6,10 +6,11 @@ import { ForumContext } from '../../contexts/Forum'
 
 const SubForum = ({ navigation }) => {
 
-  const { subForum, semester } = useContext(ForumContext)
+  const { subForum, semester, subject } = useContext(ForumContext)
 
   const [selectedSubForum, setSelectedSubForum] = subForum
   const [selectedSemester, setSelectedSemester] = semester
+  const [selectedSubject, setSelectedSubject] = subject
 
   return (
     <Background>
@@ -21,6 +22,10 @@ const SubForum = ({ navigation }) => {
               <TouchableOpacity 
                 key={index}
                 style={styles.subForumBtn}
+                onPress={() => {
+                  setSelectedSubject(subject)
+                  navigation.navigate('Topics')
+                }}
               >
                 <Text style={styles.subForumTxt}>{subject}</Text>
               </TouchableOpacity>
