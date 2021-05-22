@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+
 import Background from '../../components/background/Background';
 import StackHeader from '../../components/stackHeader/StackHeader';
+import { ForumContext } from '../../contexts/Forum'
 
 import ads from './utils/adsSubjects'
 
 const forum = ({ navigation }) => {
+
+  const { subForum, semester } = useContext(ForumContext)
+
+  const [selectedSubForum, setSelectedSubForum] = subForum
+  const [selectedSemester, setSelectedSemester] = semester
 
   return (
     <Background>
@@ -15,7 +22,11 @@ const forum = ({ navigation }) => {
           return(
             <TouchableOpacity 
               key={index} 
-              onPress={()=> {}} 
+              onPress={()=> {
+                setSelectedSubForum(semester)
+                setSelectedSemester(`${index+1}° Semestre`)
+                navigation.navigate('SubForum')
+              }}
               style={styles.semesterBtn}
             >
               <Text style={styles.semesterTxt}>{`${index+1}° Semestre`}</Text>
