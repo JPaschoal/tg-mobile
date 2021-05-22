@@ -11,9 +11,10 @@ import { StudentContext } from '../../contexts/Student'
 
 const Topics = ({ navigation }) => {
 
-  const { subject } = useContext(ForumContext)
   const [profile] = useContext(StudentContext)
+  const { subject, topic } = useContext(ForumContext)
   const [selectedSubject, setSelectedSubject] = subject
+  const [selectedTopic, setSelectedTopic] = topic
   const [topics, setTopics] = useState()
   const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
@@ -61,6 +62,10 @@ const Topics = ({ navigation }) => {
               <TouchableOpacity 
                 key={index}
                 style={styles.topicBtn}
+                onPress={() => {
+                  setSelectedTopic(topic)
+                  navigation.navigate('Topic')
+                }}
               >
                 <Text style={styles.topicTxt}>{topic.name}</Text>
               </TouchableOpacity>
