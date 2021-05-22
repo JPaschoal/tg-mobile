@@ -10,6 +10,7 @@ import Login from './screens/login/Login'
 import { AuthContext } from './contexts/Auth'
 import { StudentProvider } from './contexts/Student'
 import StackNavigation from './components/stackNavigation/StackNavigation'
+import StackNavigationForums from './components/stackNavigationForums/stackNavigationForums'
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +47,7 @@ export default Routes = () => {
           >
             <Tab.Screen name="Aluno" component={Drawer} />
             <Tab.Screen name="Cadernos" component={StackNavigation} />
-            <Tab.Screen name="Fóruns" component={Forums} />
+            <Tab.Screen name="Fóruns" component={StackNavigationForums} />
             <Tab.Screen name="Logout" component={Logout} />
           </Tab.Navigator>
         </NavigationContainer>
