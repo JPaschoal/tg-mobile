@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useState } from 'react/cjs/react.development';
 
-const StackHeader = ({title, previous}) => {
+const StackHeader = ({title, previous, goBackTo, save, onSave}) => {
   const [headerWidth, setHeaderWidth] = useState()
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const StackHeader = ({title, previous}) => {
   return (
     <View style={styles.container}>
       {previous && (
-        <TouchableOpacity onPress={() => { console.warn("press")}} style={styles.backButton}>
+        <TouchableOpacity onPress={() => { goBackTo(previous) }} style={styles.backButton}>
           <Feather name='arrow-left' size={30} color='#012480'/>
         </TouchableOpacity>
       )}
@@ -22,6 +22,11 @@ const StackHeader = ({title, previous}) => {
         textAlign: 'center',
         fontSize: 40
       }}>{title}</Text>
+      {save && (
+        <TouchableOpacity onPress={onSave}>
+          <Feather name='save' size={30} color='#012480' style={{marginTop: 15}} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -40,7 +45,6 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   backButton: {
-    backgroundColor: '#fff'
   }
 })
 

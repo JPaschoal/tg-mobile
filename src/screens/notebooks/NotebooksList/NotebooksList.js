@@ -8,8 +8,10 @@ import api from '../../../services/api';
 import { StudentContext } from '../../../contexts/Student'
 import StackHeader from '../../../components/stackHeader/StackHeader'
 import CreateNotebook from '../createNotebook/createNotebook'
+import { NotebookContext } from '../../../contexts/Notebook'
+import FABCreateButton from '../../../components/FABCreateButton/FABCreateButton';
 
-const NotebooksList = () => {
+const NotebooksList = ({ navigation }) => {
   const [profile] = useContext(StudentContext)
   const [notebooks, setNotebooks] = useState()
   const [loading, setLoading] = useState(true)
@@ -18,6 +20,7 @@ const NotebooksList = () => {
   const [updateNotebook, setUpdateNotebook] = useState()
   const [deleteModal, setDeleteModal] = useState()
   const [selectedDelete, setSelectedDelete] = useState()
+  const [selectedNotebook, setSelectedNotebook] = useContext(NotebookContext)
 
   useEffect( () => {
     getNotebooks()
@@ -36,9 +39,10 @@ const NotebooksList = () => {
     api.delete('notebooks/delete', { data: { id: id } })
     .then(({ data }) => {
       const { status } = data
-      if(status == 'success')
+      if(status == 'success') {
         getNotebooks()
         setLoading(false)
+      }
     })
   }
 
@@ -63,28 +67,36 @@ const NotebooksList = () => {
             notebooks.length > 0 ? (
               notebooks.map((notebook, index) => {
                 return (
-                  <View key={index} style={styles.notebookContainer}>
-                    <View>
-                      <Text>{notebook.name}</Text>
-                      <Text>{notebook.subject}</Text>
+                  <TouchableOpacity  
+                    key={index} 
+                    onPress={() => {
+                      navigation.navigate('Anotações')
+                      setSelectedNotebook(notebook.id)
+                    }}
+                  >
+                    <View style={styles.notebookContainer}>
+                      <View>
+                        <Text style={styles.notebookName}>{notebook.name}</Text>
+                        <Text style={styles.notebookSubject}>{notebook.subject}</Text>
+                      </View>
+                      <View style={styles.iconsContainer}>
+                        <TouchableOpacity onPress={() => {
+                          setIsOpen(true)
+                          setOperation('update')
+                          setUpdateNotebook({
+                            id: notebook.id,
+                            name: notebook.name,
+                            subject: notebook.subject
+                          })
+                        }}>
+                          <Feather name='edit' size={24} color={'#012480'}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => handlePressDelete(notebook.id)}>
+                          <Feather name='trash-2' size={24} color={'#012480'}/>
+                        </TouchableOpacity>
+                      </View>
                     </View>
-                    <View style={styles.iconsContainer}>
-                      <TouchableOpacity onPress={() => {
-                        setIsOpen(true)
-                        setOperation('update')
-                        setUpdateNotebook({
-                          id: notebook.id,
-                          name: notebook.name,
-                          subject: notebook.subject
-                        })
-                      }}>
-                        <Feather name='edit' size={24} color={'#012480'}/>
-                      </TouchableOpacity>
-                      <TouchableOpacity onPress={() => handlePressDelete(notebook.id)}>
-                        <Feather name='trash-2' size={24} color={'#012480'}/>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
+                  </TouchableOpacity>
                 )
               })
             ) : (
@@ -94,16 +106,7 @@ const NotebooksList = () => {
             )
           )}
         </ScrollView>
-        <TouchableOpacity 
-          styles={styles.plusBtn}  
-          onPress={() => {
-            setOperation('create')
-            setIsOpen(true)
-          }
-        }
-          >
-          <Feather name='plus' size={48} color={'#fff'} style={styles.btnIcon} />
-        </TouchableOpacity>
+        <FABCreateButton setOperation={setOperation} setOpen={setIsOpen}  />
         <Modal
           animationIn='slideInUp'
           isVisible={deleteModal}
@@ -170,20 +173,15 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(35, 49, 170, 0.1)',
     borderRadius: 10
   },
+  notebookName: {
+    fontSize: 18
+  },
+  notebookSubject: {
+    fontSize: 14
+  },
   iconsContainer: {
     flexDirection: 'row',
     alignItems: 'center'
-  },
-  plusBtn: {
-    position: 'absolute',
-    alignItems: 'flex-end'
-  },
-  btnIcon: {
-    backgroundColor: "rgba(35, 49, 170, 0.5)",
-    width: 48,
-    borderRadius: 100,
-    alignSelf:'center',
-    marginBottom: 5
   },
   modal: {
     alignItems: 'center'
