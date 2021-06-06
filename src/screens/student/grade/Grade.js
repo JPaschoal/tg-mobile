@@ -16,8 +16,14 @@ const Grade = ({ navigation }) => {
   useEffect(() => {
     api.get('grades')
     .then((response) => {
-      setGrades(response.data)
-      setLoading(false)
+      if(Array.isArray(response.data)) {
+        setGrades(response.data)
+        setLoading(false)
+      }
+      else {
+        setGrades([])
+        setLoading(false)
+      }
     })
   }, [])
 
@@ -63,7 +69,7 @@ const Grade = ({ navigation }) => {
               />
             </View>
             <View style={styles.gradeContainer}>
-              {selected >= 0 ? (
+              {selected > 0 ? (
                 <View style={styles.infoGradeContainer}>
                   <Text style={styles.disciplineName}>
                     {grades[selected].discipline.name}
@@ -81,7 +87,7 @@ const Grade = ({ navigation }) => {
                   })}
                 </View>
               ) : (
-                <View><Text>selecione</Text></View>
+                <View><Text>Selecione uma disciplina</Text></View>
               )}
             </View>
           </View>
