@@ -19,16 +19,17 @@ const Schedules = ({ navigation }) => {
   useEffect(() => {
     api.get('schedule')
     .then((response) => {
-      setSchedules(response.data)
-      setLoading(false)
-    })
-    api.get('enrolledDisciplines')
-    .then((response) => {
-      const data = response.data;
-      const disciplines = data.map((e) => {
-        return {name: e.name, code: e.code}
+      const sch = response.data
+      api.get('enrolledDisciplines')
+      .then((response) => {
+        const data = response.data;
+        const disciplines = data.map((e) => {
+          return {name: e.name, code: e.code}
+        })
+        setDisciplines(disciplines)
+        setSchedules(sch)
+        setLoading(false)
       })
-      setDisciplines(disciplines)
     })
   }, [])
 
